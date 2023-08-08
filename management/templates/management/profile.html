@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <div class="ms_profile_wrapper">
+                <h1>ویرایش پروفایل</h1>
+                <div class="ms_profile_box">
+                    <div class="ms_pro_img">
+                        <img src="{% static 'images/profile_pic.png' %}" alt="" class="img-fluid">
+                        <div class="pro_img_overlay">
+                            <i class="fa_icon edit_icon"></i>
+                        </div>
+                    </div>
+                    <div class="ms_pro_form">
+                        <form method="post" action="{% url 'management:profile' %}">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label>نام *</label>
+                                <input type="text" id="id_first_name" name="first_name" value="{{ form.first_name.value }}" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>نام خانوادگی *</label>
+                                <input type="text" id="id_last_name" name="last_name" value="{{ form.last_name.value }}" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>شماره همراه *</label>
+                                <input type="text" id="id_phone_number" name="phone_number" value="{{ form.phone_number.value }}" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>ایمیل *</label>
+                                <input type="text" id="id_email" name="email" value="{{ form.email.value }}" class="form-control" required>
+                            </div>
+
+                            <div class="pro-form-btn text-center marger_top15">
+                                <input type="submit" value="ذخیره" class="ms_btn" style="border: none; cursor: pointer">
+                                <a href="{% url 'home:home' %}" class="ms_btn">انصراف</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+{% endblock %}

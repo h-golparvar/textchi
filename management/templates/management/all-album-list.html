@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="album_btn "><br>
+    <a href="{% url 'management:add-album' %}" class="ms_btn"><span class="play_all">آلبوم جدید</span></a>
+</div>
+
+
+
+
+<div class="album_inner_list" style="padding-top: 30px">
+				<div class="album_list_wrapper">
+					<ul class="album_list_name">
+						<li>تصویر</li>
+						<li>نام آهنگ</li>
+						<li>خواننده</li>
+						<li class="text-center">آهنگ ها</li>
+						<li class="text-center"> بیشتر</li>
+					</ul>
+                    {% for album in albums %}
+					<ul class="album_single">
+
+                        <li><a href="{{album.get_absolute_url}}"><img src="{{ album.picture }}" width="40" height="40" class="img-fluid"></a></li>
+						<li><a href="{{album.get_absolute_url}}">{{ album.name }}</a></li>
+						<li><a href="{{album.get_absolute_url}}">{{ album.singer }}</a></li>
+						<li class="text-center"><a href="{{album.get_absolute_url}}">{{ album.songs.count }}</a></li>
+						<li class="text-center ms_more_icon"><a href="javascript:;"><span class="ms_icon1 ms_active_icon"></span></a>
+                            <ul class="more_option">
+                                <li><a target="_self" href="{% url 'management:edit-album' album.id %}"><span class="opt_icon"></span>ویرایش</a></li>
+                                <li><a href="{{ album.open }}"><span class="opt_icon"></span>
+                                    {% if album.situation == 'Published' %}
+                                    نمایش
+                                    {% else %}
+                                    پیش نمایش
+                                    {% endif %}
+
+                                </a></li>
+                                <li><a href="javascript:;" data-toggle="modal" data-target="#clear_modal"><span class="opt_icon"></span>حذف</a></li>
+
+                            </ul>
+						</li>
+					</ul>
+                    {% endfor %}
+
+
+
+
+				</div>
+			</div>
+
+{% endblock %}

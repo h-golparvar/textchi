@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+    <br><br><br>
+<div class="pro-form-btn text-center padder_top20">
+    <div>
+        <a class="ms_btn w-50 h-25" href="{% url 'management:profile' %}">پروفایل</a>
+    </div><br>
+    <div>
+        <a class="ms_btn w-50 h-25" href="{% url 'management:all-songs' %}">آهنگ ها</a>
+    </div><br>
+    <div>
+        <a class="ms_btn w-50 h-25" href="{% url 'management:all-gener' %}">ژانرها</a>
+    </div><br>
+    <div>
+        <a class="ms_btn w-50 h-25" href="{% url 'management:all-albums' %}">آلبوم ها</a>
+    </div><br>
+    <div>
+        <a class="ms_btn w-50 h-25" href="{% url 'management:favorites-list' %}">علافه مندی ها</a>
+    </div><br>
+    <div>
+    <a class="ms_btn w-50 h-25" href="{% url 'management:logout' %}">خروج</a>
+    </div>
+</div><br><br>
+
+{% endblock %}

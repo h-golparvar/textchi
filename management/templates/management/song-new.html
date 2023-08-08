@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <div class="ms_profile_wrapper">
+                <h1>افزودن آهنگ جدید</h1>
+                <div class="ms_profile_box">
+                    <div class="ms_pro_img">
+                        <img src="{{ song.picture }}" alt="" class="img-fluid">
+                        <div class="pro_img_overlay">
+                            <i class="fa_icon edit_icon"></i>
+                        </div>
+                    </div>
+<div class="ms_pro_form">
+    <form method="post" action="{% url 'management:new-song' %}">
+        {% csrf_token %}
+        {{ form }}
+
+        <div class="pro-form-btn text-center marger_top15">
+        <input type="submit" value="ذخیره" class="ms_btn" style="border: none; cursor: pointer">
+        <a href="{% url 'management:all-songs' %}" class="ms_btn">انصراف</a>
+        </div>
+    </form>
+</div>
+
+                    </div>
+                </div>
+            </div>
+
+{% endblock %}

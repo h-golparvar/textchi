@@ -1,0 +1,110 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block blog %}
+
+    <div class="ms_blog_single_wrapper">
+				<div class="row">
+					<div class="col-lg-9 col-md-9">
+						<div class="ms_blog_single">
+							<div class="blog_single_img">
+								<img src="{{ post.picture }}" alt="" class="img-fluid">
+							</div>
+							<div class="blog_single_content">
+								<h3 class="ms_blog_title">{{ post.title }}</h3>
+								<div class="ms_post_meta">
+									<ul>
+										<li>{{ post.created|date }} / </li>
+										<li>12 لایک /    </li>
+										<li>{{ post.comments.count }} دیدگاه    </li>
+									</ul>
+								</div>
+								{{ post.body|safe }}
+								<div class="ms_blog_tag foo_sharing">
+									<ul>
+										<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+										<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+										<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+										<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="blog_comments">
+								<h1>نظرات</h1>
+								<ol>
+                                    {% for comment in post.comments.all %}
+                                        {% if not comment.is_replay %}
+									<li>
+										<div class="ms_comment_section">
+											<div class="comment_img">
+												<img src="{% static 'images/blog/author.jpg' %}" alt="">
+											</div>
+											<div class="comment_info">
+												<div class="comment_head">
+													<h3>{{ comment.name }}</h3>
+													<p>{{ comment.created }}</p>
+												</div>
+												{{ comment.body|safe }}
+												<a href="#" class="comment_reply">پاسخ</a>
+											</div>
+										</div>
+
+									</li>
+                                        {% endif %}
+
+                                        {% for replay in comment.replays.all %}
+                                         <li class="padding_right40">
+										<div class="ms_comment_section">
+											<div class="comment_img">
+												<img src="{% static 'images/blog/author.jpg' %}" alt="">
+											</div>
+											<div class="comment_info">
+												<div class="comment_head">
+													<h3>{{ replay.name }}</h3>
+													<p>{{ replay.created }}</p>
+												</div>
+												{{ replay.body|safe }}
+												<a href="#" class="comment_reply">پاسخ</a>
+											</div>
+										</div>
+
+									</li>
+                                        {% endfor %}
+                                    {% endfor %}
+
+								</ol>
+							</div>
+							<!----Blog Comment Form---->
+							<div class="blog_comments_forms">
+								<h1>ارسال نظر</h1>
+								<form action="{% url 'blog:add-comment' %}" method="post">
+                                    {% csrf_token %}
+									<div class="row">
+										<div class="col-lg-6 col-md-6">
+											<div class="comment_input_wrapper">
+												<input name="name" value="" type="text" class="cmnt_field" placeholder="نام ...">
+											</div>
+										</div>
+										<div class="col-lg-6 col-md-6">
+											<div class="comment_input_wrapper">
+												<input name="email" value="" type="email" class="cmnt_field" placeholder="ایمیل ...">
+											</div>
+										</div>
+										<div class="col-lg-12 col-md-12">
+											<div class="comment_input_wrapper">
+												<textarea id="comment" name="comment" class="cmnt_field" placeholder="نظر خود را بنویسید ..."></textarea>
+											</div>
+										</div>
+										<div class="col-lg-12 col-md-12">
+											<div class="comment-form-submit">
+												<input name="submit" type="submit" id="comment-submit" class="submit ms_btn" value="ارسال دیدگاه">
+											</div>
+										</div>
+									</div>
+                               </form>
+							</div>
+						</div>
+					</div>
+
+
+
+{% endblock %}

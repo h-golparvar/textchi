@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+ <div class="modal-content">
+                    <button type="button" class="close" data-dismiss="modal">
+						<i class="fa_icon form_close"></i>
+					</button>
+                    <div class="modal-body">
+                        <div class="ms_register_img">
+                            <img src="{% static 'images/register_img.png' %}" alt="" class="img-fluid" />
+                        </div>
+                        <div class="ms_register_form">
+                            <h2>ثبت نام / ورود</h2>
+                            <form method="post" action="{% url 'management:user-creation' %}">
+                                {% csrf_token %}
+                            <div class="form-group">
+                                <input type="text" name="first_name" placeholder="نام" class="form-control">
+                                <span class="form_icon">
+							<i class="fa_icon form-user" aria-hidden="true"></i>
+							</span>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="last_name" placeholder="نام خانوادگی" class="form-control">
+                                <span class="form_icon">
+							<i class="fa_icon form-user" aria-hidden="true"></i>
+							</span>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="phone_number" placeholder="شماره همراه" class="form-control">
+                                <span class="form_icon">
+							<i class="fa_icon form-user" aria-hidden="true"></i>
+							</span>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="email" placeholder="ایمیل" class="form-control">
+                                <span class="form_icon">
+							<i class="fa_icon form-envelope" aria-hidden="true"></i>
+						</span>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" name="password1" placeholder="رمز عبور" class="form-control">
+                                <span class="form_icon">
+						<i class="fa_icon form-lock" aria-hidden="true"></i>
+						</span>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" name="password2" placeholder="تکرار رمز عبور" class="form-control">
+                                <span class="form_icon">
+						<i class=" fa_icon form-lock" aria-hidden="true"></i>
+						</span>
+                            </div>
+                            <a href="#" class="ms_btn">ثبت نام</a>
+                                <input type="submit" class="ms_btn" value="ثبت نام" style="border: 1px solid #fff; height: 40px; cursor: pointer">
+                            </form>
+                            <p>قبلا ثبت نام کرده اید ؟ <a href="#myModal1" data-toggle="modal" class="ms_modal hideCurrentModel">ورود</a></p>
+                        </div>
+                    </div>
+ </div>
+
+{% endblock %}

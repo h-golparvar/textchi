@@ -1,0 +1,15 @@
+
+        {% for field in form %}
+            <div class="form-group">
+                <label> {{ field.label_tag }}
+                {% if field.field.required %}
+                    *
+                {% endif %}
+                </label>
+                {{ field.errors }}
+                {{ field }}
+                <!--<input type="" id="{{ field.id }}" name="email" value="{{ field.value }}" class="form-control" required>-->
+            </div>
+            <br>
+        {% endfor %}
+

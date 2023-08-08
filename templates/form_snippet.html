@@ -1,0 +1,17 @@
+<div class="ms_pro_form">
+    <form method="post" action="">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="form-group">
+                <label>{{ field.label_tag }} *</label>
+                <input type="text" id="" name="email" value="" class="form-control" required>
+            </div>
+            <br>
+        {% endfor %}
+        <div class="pro-form-btn text-center marger_top15">
+            <input type="submit" value="ذخیره" class="ms_btn">
+            <a href="" class="ms_btn">ذخیره</a>
+            <a href="{% url 'home:home' %}" class="ms_btn">انصراف</a>
+        </div>
+    </form>
+</div>

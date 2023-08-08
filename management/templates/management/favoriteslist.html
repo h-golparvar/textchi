@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <!----singers Section Start---->
+    <div album_single_text>
+        <div class="album_single_text">
+            <h2>علاقه مندی های من</h2>
+        </div>
+    </div>
+
+    <br><br>
+    <div class="ms_top_artist">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="ms_heading">
+                                <h1>خوانندگان مورد علاقه:</h1>
+                            </div>
+                        </div>
+
+                        {% if not singers %}
+                                <div class="about_artist">
+                                        <p>متاسفانه موردی یافت نشد ...</p>
+                               </div>
+                        {% endif %}
+                        {% for singer in singers %}
+                        <div class="col-lg-2 col-md-6">
+                        <a href="{{ singer.get_absolute_url }}">
+                            <div class="ms_rcnt_box">
+                                <div class="ms_rcnt_box_img">
+                                    <a href="{{ singer.get_absolute_url }}">
+                                    <img src="{{ singer.picture }}" alt="" class="img-fluid">
+                                    <div class="ms_main_overlay">
+                                        <div class="ms_box_overlay"></div>
+
+                                    </div>
+                                </div>
+                                <div class="ms_rcnt_box_text">
+                                    <h3><a href="{{ singer.get_absolute_url }}">{{ singer }}</a></h3>
+                                </div>
+                            </div>
+                        </a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+    </div>
+
+
+
+    <!----songs Section Start---->
+    <div class="ms_top_artist">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="ms_heading">
+                                <h1>آهنگ های مورد علاقه:</h1>
+                            </div>
+                        </div>
+
+                        {% if not songs %}
+                            <div class="ms_album_single_wrapper ms_artist_single">
+                                <div class="about_artist">
+                                        <p>متاسفانه موردی یافت نشد ...</p>
+                               </div>
+                            </div>
+                        {% endif %}
+                        {% for song in songs %}
+                        <div class="col-lg-2 col-md-6">
+                            <div class="ms_rcnt_box marger_bottom30">
+                                <div class="ms_rcnt_box_img">
+                                    <a href="{{ song.get_absolute_url }}">
+                                        <img src="{{ song.picture }}" alt="{{ song.title }}" class="img-fluid">
+                                    <div class="ms_main_overlay">
+                                        <div class="ms_box_overlay"></div>
+                                        <div class="ms_play_icon">
+                                            <img src="{% static 'images/svg/play.svg' %}" alt="">
+                                        </div>
+                                    </div>
+                                    </a>
+                                </div>
+                                <div class="ms_rcnt_box_text">
+                                    <h3><a href="{{ song.get_absolute_url }}">{{ song.fa_name }}</a></h3>
+                                    <p>{{ song.singer }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+    </div>
+
+{% endblock %}

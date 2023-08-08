@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% block blog %}
+
+{% endblock %}
+    <div class="col-lg-3 col-md-3">
+    <!----Sidebar Start---->
+						<div class="ms_sidebar">
+							<div class="widget widget_search">
+								<input type="text" class="form-control" placeholder="جستجو ...">
+                                <button class="search_btn search_icon"><i class="fa fa-search" aria-hidden="true"></i></button>
+							</div>
+							<!--Categories-->
+							<div class="widget widget_categories">
+								<h2 class="widget-title">دسته بندی</h2>
+								<ul>
+                                    {% for category in categories %}
+									<li><a href="{{ category.get_absolute_url }}">{{ category }}</a></li>
+                                    {% endfor %}
+
+								</ul>
+                           </div>
+						   <!--Feature Post-->
+						   <div class="widget widget_recent_entries">
+								<h2 class="widget-title">برترین پست ها</h2>
+								<ul>
+									<li>
+										<div class="recent_cmnt_img">
+											<img src="{% static 'images/weekly/song2.jpg' %}" alt="">
+										</div>
+										<div class="recent_cmnt_data">
+											<h4><a href="#">پست 1</a></h4>
+											<span>07 اکتبر، 2018</span>
+										</div>
+									</li>
+									<li>
+										<div class="recent_cmnt_img">
+											<img src="{% static 'images/blog/fp_img1.jpg' %}" alt="">
+										</div>
+										<div class="recent_cmnt_data">
+											<h4><a href="#">پست 2</a></h4>
+											<span>11 آوریل, 2018</span>
+										</div>
+									</li>
+									<li>
+										<div class="recent_cmnt_img">
+											<img src="{% static 'images/blog/fp_img2.jpg' %}" alt="">
+										</div>
+										<div class="recent_cmnt_data">
+											<h4><a href="#">پست 3</a></h4>
+											<span>24 آوریل, 2018</span>
+										</div>
+									</li>
+								</ul>
+                            </div>
+							<!---Tags--->
+							<div class="widget widget_tag_cloud">
+
+								<h2 class="widget-title">تگ ها</h2>
+								<ul>
+									{% for tag in tags %}
+									<li><a href="{{ tag.get_absolute_url }}">{{ tag }}</a></li>
+                                    {% endfor %}
+								</ul>
+                           </div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+{% endblock %}
