@@ -1,0 +1,12 @@
+/*
+بسم الله الرحمن الرحیم
+
+
+*/
+/*-----------------------Custom Fonts-------------------------*/
+@font-face {
+    font-family: 'Josefin Sans';
+    font-style: normal;
+    font-weight: 100;
+    src: url(../fonts/iransansweblight.woff2) format('woff2');
+}
